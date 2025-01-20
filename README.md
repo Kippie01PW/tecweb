@@ -1,9 +1,11 @@
-Matricula: 202322522
+#Repositorio de Tecnologias Web 
 
-Nombre: Andrei Carro Flores
+##Matricula: 202322522
 
-Materia: Tecnologias de Web
+##Nombre: Andrei Carro Flores
 
-Periodo: Primavera 2025
+##Materia: Tecnologias de Web
 
-Descripcion: El proposito de este repositorio es subir las practicas realizadas durante el transcurso de la materia de Tecnologias Web
+##Periodo: Primavera 2025
+
+##Descripcion: El proposito de este repositorio es subir las practicas realizadas durante el transcurso de la materia de Tecnologias Web
