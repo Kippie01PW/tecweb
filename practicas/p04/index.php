@@ -54,5 +54,33 @@
     unset($c);
     ?>
 
+    <h2>Ejercicio 3</h2>
+    <p>Muestra el contenido de cada variable inmediatamente después de cada asignación,
+    verificar la evolución del tipo de estas variables</p>
+    <?php
+    error_reporting(0);
+    $a = "PHP5";
+    echo "\$a: ";
+    echo $a . "<br>";
+    $z[] = &$a;
+    echo "\$z: ";
+    print_r($z);
+    echo "<br>"; 
+    $b = "5a version de PHP"; 
+    echo "\$b: ";
+    echo $b . "<br>";
+    $c = $b*10;
+    echo "\$c: ";
+    echo $c . "<br>";
+    $a .= $b;
+    echo "\$a: ";
+    echo $a . "<br>";
+    $b *= $c;
+    echo "\$b: ";
+    echo $b . "<br>";
+    $z[0] = "MySQL";
+    echo "\$z[0]: ";
+    print_r( $z[0] );
+    ?>
 </body>
 </html>
