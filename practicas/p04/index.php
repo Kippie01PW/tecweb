@@ -123,6 +123,32 @@
     unset($b);
     unset($c);
     ?>
+    <h2>Ejercicio 5</h2>
+    <p>Dar el valor de las variables $a, $b, $c al final del script.</p>
+    <?php 
 
+    $a = "7 personas";
+    echo "<p>El valor que tomará \$a es de: </p>" . $a; 
+    echo "<br>";
+
+    $b = (integer) $a;
+    $a = "9E3";
+    echo "<p>El valor que tomará \$a es de: </p>" . $a; 
+    echo "<br>";
+    $c = (double) $a;
+;
+
+    $b = 7; 
+    echo "<p>El valor que tomará \$b es de: </p>" . $b; 
+    echo "<br>";
+
+    $c = 9000.0; 
+    echo "<p>El valor que tomará \$c es de: </p>" . $c; 
+    echo "<br>";
+
+    unset($a);
+    unset($b);
+    unset($c);
+    ?>
 </body>
 </html>
