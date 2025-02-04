@@ -188,6 +188,27 @@
     echo "\$e:";
     echo var_export($e, true); 
     echo "<br>";
+
+    unset($a);
+    unset($b);
+    unset($c);
+    unset($d);
+    unset($e);
+    unset($f);
+    ?>
+
+    <h2>Ejercicio 7</h2>
+    <p>Variable predefinida $_SERVER</p>
+    <?php
+    //Versión de Apache y PHP
+    echo "Versión de Apache: " . $_SERVER['SERVER_SOFTWARE'] . "<br>";
+    echo "Versión de PHP: " . phpversion() . "<br>";
+
+    //Nombre del sistema operativo (servidor)
+    echo "Sistema Operativo del servidor: " . php_uname() . "<br>";
+
+    //Idioma del navegador
+    echo "Idioma del navegador: " . $_SERVER['HTTP_ACCEPT_LANGUAGE'] . "<br>";
     ?>
 </body>
 </html>
