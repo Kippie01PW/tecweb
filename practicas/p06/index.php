@@ -24,6 +24,29 @@
         generacion_repetitiva(); 
     ?>
 
+    <h2>Ejercicio 3</h2>
+    <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
+    pero que además sea múltiplo de un número dado.</p>
+    <p>Para que aparezca la función debes colocar esto en la barra de navegación <b>"?num="numero que tu quieras""</b></p>
+    <?php
+    require_once __DIR__ .'/src/funciones.php';
+    if(isset($_GET['num'])){
+        num_multiplo_dado($_GET['num']); 
+
+        echo '<br>'; 
+        echo '<p>La función de abajo es la misma función de arriba pero ahora con un do while!!</p>'; 
+        num_multiplo_dado_variante($_GET['num']); 
+    }
+    ?>
+
+    <h2>Ejercicio 4</h2>
+    <p>Crear un arreglo cuyos índices van de 97 a 122 y cuyos valores son las letras de la 'a'
+    a la 'z'.</p>
+    <?php
+    require_once __DIR__ .'/src/funciones.php';
+        arreglo_for(); 
+    ?>
+
     <h2>Ejemplo de POST</h2>
     <form action="http://localhost/tecweb/practicas/p04/index.php" method="post">
         Name: <input type="text" name="name"><br>
@@ -38,21 +61,6 @@
             echo '<br>';
             echo $_POST["email"];
         }
-    ?>
-
-    <h2>Ejercicio 3</h2>
-    <p>Utiliza un ciclo while para encontrar el primer número entero obtenido aleatoriamente,
-    pero que además sea múltiplo de un número dado.</p>
-    <p>Para que aparezca la función debes colocar esto en la barra de navegación <b>"?num="numero que tu quieras""</b></p>
-    <?php
-    require_once __DIR__ .'/src/funciones.php';
-    if(isset($_GET['num'])){
-        num_multiplo_dado($_GET['num']); 
-
-        echo '<br>'; 
-        echo '<p>La función de abajo es la misma función de arriba pero ahora con un do while!!</p>'; 
-        num_multiplo_dado_variante($_GET['num']); 
-    }
     ?>
 </body>
 </html>

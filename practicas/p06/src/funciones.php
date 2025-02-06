@@ -64,4 +64,22 @@ function num_multiplo_dado_variante($numero){
 
     echo 'El numero aleatorio: ' . $multiplo . ' es múltiplo del número que colocaste: ' . $numero; 
 }
+
+function arreglo_for(){
+    $arreglo = array();
+
+for ($i = 97; $i <= 122; $i++) {
+    $arreglo[$i] = chr($i);
+}
+    echo '<table border="1">';
+    echo '<tr><th>Índice</th><th>Valor</th></tr>';
+
+foreach ($arreglo as $key => $value) {
+    echo '<tr>';
+    echo '<td>' . $key . '</td>';
+    echo '<td>' . $value . '</td>';
+    echo '</tr>';
+}
+    echo '</table>';
+}
 ?>
