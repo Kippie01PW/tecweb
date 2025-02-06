@@ -62,5 +62,23 @@
             echo $_POST["email"];
         }
     ?>
+
+    <h2>Ejercicio 5</h2>
+    <p>Realización de formulario </p>
+
+    <form action="http://localhost/tecweb/practicas/p06/src/xhtml1.php" method="post">
+        <fieldset>
+            <legend>Información para acceder: </legend>
+
+            <label for="edad">Edad: </label><input type="number" name="edad" required>
+            <label for="sexo">Sexo: </label>
+            <select name="sexo" id="sexo" required>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option> 
+            </select>
+        </fieldset>
+        <input type="submit" value="Enviar">
+    </form>
+
 </body>
 </html>
