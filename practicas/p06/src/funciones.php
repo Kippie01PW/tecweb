@@ -40,4 +40,28 @@ function generacion_repetitiva(){
     }
     echo 'en: ' . $contador . ' iteraciones' . ' es decir, en: ' . $contador*3 . ' números';
 }
+
+function num_multiplo_dado($numero){
+    $numero = $_GET['num']; 
+    $multiplo = 1; 
+    while (($multiplo%$numero)!=0){
+    global $multiplo; 
+
+    $multiplo = rand (1, 1000); 
+    }
+    
+    echo 'El numero aleatorio: ' . $multiplo . ' es múltiplo del número que colocaste: ' . $numero; 
+}
+
+function num_multiplo_dado_variante($numero){
+    $numero = $_GET['num']; 
+    $multiplo = 0; 
+    do{
+    global $multiplo; 
+
+    $multiplo = rand (1, 1000); 
+    }while(($multiplo%$numero)!=0); 
+
+    echo 'El numero aleatorio: ' . $multiplo . ' es múltiplo del número que colocaste: ' . $numero; 
+}
 ?>
