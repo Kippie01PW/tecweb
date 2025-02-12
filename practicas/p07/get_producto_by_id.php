@@ -35,7 +35,6 @@
 	</head>
 	<body>
 		<h3>PRODUCTO</h3>
-
 		<br/>
 		
 		<?php if( isset($row) ) : ?>
@@ -66,7 +65,6 @@
 					</tr>
 				</tbody>
 			</table>
-
 		<?php elseif(!empty($id)) : ?>
 
 			 <script>
