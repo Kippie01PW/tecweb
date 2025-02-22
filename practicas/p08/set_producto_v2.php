@@ -29,7 +29,9 @@ if ($link->connect_errno)
 /** Crear una tabla que no devuelve un conjunto de resultados */
 
 //$sql = "INSERT INTO productos VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$descripcion}', {$unidades}, '{$imagen}')";
-$sql = "INSERT INTO productos (nombre, marca, modelo, precio, detalles ,unidades) VALUES ('{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$descripcion}', {$unidades})";
+$sql = "INSERT INTO productos (id, nombre, marca, modelo, precio, detalles, unidades, imagen) 
+        VALUES (null, '{$nombre}', '{$marca}', '{$modelo}', {$precio}, '{$descripcion}', {$unidades}, '{$imagen}')";
+
 if ( $link->query($sql) ) 
 {
     echo 'Producto insertado con ID: '.$link->insert_id;
@@ -47,7 +49,6 @@ else
 	echo 'El Producto no pudo ser insertado =(';
 }
  }
-
 
 $link->close();
 ?>
