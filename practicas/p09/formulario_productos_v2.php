@@ -17,7 +17,7 @@
 
     <p>En esta sección se registran los nuevos productos que lleguen a la empresa</p>
 
-    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p09/formulario_productos_v2.php" method="post" onsubmit="return seleccionarMarca()">
+    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p09/set_producto_v2.php" method="post" onsubmit="return seleccionarMarca()">
 
     <h2>Información del Producto</h2>
 
