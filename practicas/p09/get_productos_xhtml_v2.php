@@ -30,7 +30,7 @@
 
             alert("ID: " + id + "\nNombre: " + name + "\nMarca: " + brand + "\nModelo: " + model + "\nPrecio: " + price + "\nUnidades: " + unit + "\nDetalles: " + description + "\nRuta de imagen: " + imagen);
 
-            send2form(name, brand, model, price, description, unit, imagen);
+            send2form(id, name, brand, model, price, description, unit, imagen);
         }
         </script>
 
@@ -103,8 +103,14 @@
     ?>
 
 <script>
-        function send2form(name, brand, model, price, description, unit, imagen) {
+        function send2form(id, name, brand, model, price, description, unit, imagen) {
             var form = document.createElement("form");
+
+            var idIn = document.createElement("input");
+            idIn.type = 'hidden';
+            idIn.name = 'id';
+            idIn.value = id;
+            form.appendChild(idIn);
 
             var nameIn = document.createElement("input");
             nameIn.type = 'text';

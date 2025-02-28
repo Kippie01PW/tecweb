@@ -17,7 +17,7 @@
 
     <p>En esta sección se registran los nuevos productos que lleguen a la empresa</p>
 
-    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p09/set_producto_v2.php" method="post" onsubmit="return seleccionarMarca()">
+    <form id="formularioProductos" action="http://localhost/tecweb/practicas/p09/update_producto.php" method="POST" onsubmit="return seleccionarMarca()">
 
     <h2>Información del Producto</h2>
 
@@ -25,6 +25,7 @@
         <legend>Ingresa la información del Producto</legend>
 
         <ul>
+        <li><label for="form-id">Info del producto</label> <input type="hidden" name="id" id="form-id" value="<?= !empty($_POST['id'])?$_POST['id']:$_GET['id'] ?>" /></li>
           <li><label for="form-name">Nombre del producto:</label> <input type="text" name="name" id="form-name" value="<?= !empty($_POST['name'])?$_POST['name']:$_GET['name'] ?>" onfocus="limpiarMensajesRepuesta1()" onblur="verificarNombre()"><div id="respuesta1"></div></li>
 
             <li><p>Selecciona una marca:</p></li>
