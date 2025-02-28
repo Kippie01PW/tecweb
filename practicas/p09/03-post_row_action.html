@@ -71,29 +71,29 @@
             </tbody>
         </table>
         <script>
-            function send2form(name, age) {
-                var form = document.createElement("form");
+        function send2form(name, age) {
+            var form = document.createElement("form");
 
-                var nombreIn = document.createElement("input");
-                nombreIn.type = 'text';
-                nombreIn.name = 'nombre';
-                nombreIn.value = name;
-                form.appendChild(nombreIn);
+            var nombreIn = document.createElement("input");
+            nombreIn.type = 'text';
+            nombreIn.name = 'nombre';
+            nombreIn.value = name;
+            form.appendChild(nombreIn);
 
-                var edadIn = document.createElement("input");
-                edadIn.type = 'text';
-                edadIn.name = 'edad';
-                edadIn.value = age;
-                form.appendChild(edadIn);
+            var edadIn = document.createElement("input");
+            edadIn.type = 'text';
+            edadIn.name = 'edad';
+            edadIn.value = age;
+            form.appendChild(edadIn);
 
-                console.log(form);
+            console.log(form);
 
-                form.method = 'POST';
-                form.action = 'formulario.php';  
+            form.method = 'POST';
+            form.action = 'formulario.php';  
 
-                document.body.appendChild(form);
-                form.submit();
-            }
-        </script>
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
     </body>
 </html>
