@@ -1,11 +1,6 @@
 <?php
-    $conexion = @mysqli_connect(
-        'localhost',
-        'root',
-        '12345678a',
-        'marketzone'
-    );
-
+    @$link = new mysqli('localhost', 'root', 'andrei2703', 'marketzone');
+    $conexion = @$link; 
     /**
      * NOTA: si la conexión falló $conexion contendrá false
      **/
