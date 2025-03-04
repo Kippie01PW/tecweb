@@ -6,13 +6,13 @@ $data = array();
 
 // SE VERIFICA HABER RECIBIDO UN TÉRMINO DE BÚSQUEDA
 if (isset($_POST['termino'])) {
-    $termino = $conexion->real_escape_string($_POST['termino']);
+    $termino = $conn->real_escape_string($_POST['termino']);
     
     // SE CONSTRUYE LA QUERY DE BÚSQUEDA
     $sql = "SELECT * FROM productos WHERE id = '{$termino}' OR nombre LIKE '%{$termino}%' OR marca LIKE '%{$termino}%'";
     
     // SE REALIZA LA QUERY DE BÚSQUEDA Y AL MISMO TIEMPO SE VALIDA SI HUBO RESULTADOS
-    if ($result = $conexion->query($sql)) {
+    if ($result = $conn->query($sql)) {
         // SE OBTIENEN LOS RESULTADOS
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $producto = array();
@@ -23,9 +23,9 @@ if (isset($_POST['termino'])) {
         }
         $result->free();
     } else {
-        die('Query Error: '.mysqli_error($conexion));
+        die('Query Error: '.mysqli_error($conn));
     }
-    $conexion->close();
+    $conn->close();
 }
 
 // SE HACE LA CONVERSIÓN DE ARRAY A JSON
