@@ -1,18 +1,7 @@
 // JSON BASE A MOSTRAR EN FORMULARIO
-var baseJSON = {
-    "precio": 0.0,
-    "unidades": 1,
-    "modelo": "XX-000",
-    "marca": "NA",
-    "detalles": "NA",
-    "imagen": "img/default.png"
-  };
-
 $(document).ready(function(){
     let edit = false;
 
-    let JsonString = JSON.stringify(baseJSON,null,2);
-    $('#description').val(JsonString);
     $('#product-result').hide();
     listarProductos();
 
@@ -118,48 +107,177 @@ $(document).ready(function(){
         }
     });
 
-    $('#product-form').submit(e => {
-        e.preventDefault();
-        $('button.btn-primary.btn-block.text-center').text("Agregar Producto");
-
-        // SE CONVIERTE EL JSON DE STRING A OBJETO
-        let postData = JSON.parse( $('#description').val() );
-        // SE AGREGA AL JSON EL NOMBRE DEL PRODUCTO
-        postData['nombre'] = $('#name').val();
-        postData['id'] = $('#productId').val();
-
-        /**
-         * AQUÍ DEBES AGREGAR LAS VALIDACIONES DE LOS DATOS EN EL JSON
-         * --> EN CASO DE NO HABER ERRORES, SE ENVIAR EL PRODUCTO A AGREGAR
-         **/
-
-        const url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
-
-
-        
-        $.post(url, postData, (response) => {
-            //console.log(response);
-            // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
-            let respuesta = JSON.parse(response);
-            // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
-            let template_bar = '';
-            template_bar += `
-                        <li style="list-style: none;">status: ${respuesta.status}</li>
-                        <li style="list-style: none;">message: ${respuesta.message}</li>
-                    `;
-            // SE REINICIA EL FORMULARIO
-            $('#name').val('');
-            $('#description').val(JsonString);
-            // SE HACE VISIBLE LA BARRA DE ESTADO
+    let validacion = false; 
+    //Validación de datos
+    $('#name').on('blur', function() {
+        var nameValue = $(this).val();
+        if (!nameValue) {
             $('#product-result').show();
-            // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
-            $('#container').html(template_bar);
-            // SE LISTAN TODOS LOS PRODUCTOS
-            listarProductos();
-            // SE REGRESA LA BANDERA DE EDICIÓN A false
-            edit = false;
-        });
+            $('#container').html('<li style="color: white;">El campo de "nombre" no debe estar vacío.</li>');
+            validacion = false; 
+        } else if (nameValue.length > 100) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "nombre" no debe superar los 100 caracteres.</li>');
+            validacion = false;
+        } else {
+            // Llamada Ajax para comprobar si el nombre existe en la base de datos
+            $.ajax({
+                url: './backend/product-data.php',
+                type: 'GET',
+                data: { search: nameValue },
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    if (data.length > 0) {
+                        $('#product-result').show();
+                        $('#container').html('<li style="color: white;">Ya existe un producto con ese nombre.</li>');
+                        validacion = false;
+                    } else {
+                        $('#container').html('');
+                        $('#product-result').hide();
+                        validacion = true;
+                    }
+                }
+            });
+        }
     });
+    
+    
+
+    $('#model').on('blur', function() {
+        var modelValue = $(this).val();
+        if (!modelValue) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "modelo" no debe estar vacío.</li>');
+            validacion = false; 
+        } else if (modelValue.length > 25) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "modelo" no debe superar los 25 caracteres.</li>');
+            validacion = false; 
+        } else {
+            $('#container').html('');
+            $('#product-result').hide();
+            validacion = true; 
+        }
+    });
+
+    $('#unit').on('blur', function() {
+        var unitValue = $(this).val();
+        if (!unitValue) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "unidades" no debe estar vacío, coloca un 0 si no hay disponibilidad.</li>');
+            validacion = false; 
+        } else {
+            $('#container').html('');
+            $('#product-result').hide();
+            validacion = true; 
+        }
+    });
+
+    $('#cost').on('blur', function() {
+        var costValue = $(this).val();
+        if (!costValue) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo "Precio" no debe estar vacío.</li>');
+            validacion = false; 
+        } else if (costValue < 100) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">Recuerda, el Precio debe ser mayor a 99.99.</li>');
+           validacion = false; 
+        } else {
+            $('#container').html('');
+            $('#product-result').hide();
+            validacion = true; 
+        }
+    });
+
+    $('#brand').on('blur', function() {
+        var brandValue = $(this).val();
+        if (!brandValue) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "Marca" no debe estar vacío.</li>');
+            validacion = false
+        } else if (brandValue.length > 25) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "Marca" no debe superar los 25 caracteres.</li>');
+           validacion = false
+        } else {
+            $('#container').html('');
+            $('#product-result').hide();
+            validacion = true; 
+        }
+    });
+    
+    $('#image').on('blur', function() {
+        var imageValue = $(this).val();
+        if (!imageValue) {
+            $(this).val('img/default.png');
+        }
+    });
+
+    $('#description').on('blur', function() {
+        var descripcionValue = $(this).val();
+        if (!descripcionValue) {
+            $(this).val('Descripción genérica');
+        } else if (descripcionValue.length > 250) {
+            $('#product-result').show();
+            $('#container').html('<li style="color: white;">El campo de "Descripción" no debe superar los 250 caracteres.</li>');
+            validacion = false; 
+        } else {
+            $('#container').html('');
+            $('#product-result').hide();
+            validacion = true;
+        }
+    });
+    ////////////FIN DE LA VALIDACIÓN///////////////////
+
+        $('#product-form').submit(e => {
+            e.preventDefault();
+            $('button.btn-primary.btn-block.text-center').text("Agregar Producto");
+            let postData = {};
+            if(validacion==false){
+                alert('No se pudo enviar los datos, verifica que los campos sean llenados correctamente');
+                return; 
+            }
+            // SE CONVIERTE EL JSON DE STRING A OBJETO
+            postData['nombre'] = $('#name').val();
+            postData['id'] = $('#productId').val();
+            postData['precio'] = $('#cost').val(); 
+            postData['unidades'] = $('#unit').val(); 
+            postData['modelo'] = $('#model').val(); 
+            postData['marca'] = $('#brand').val();
+            postData['detalles'] = $('#description').val();  
+            postData['imagen'] = $('#image').val(); 
+            const url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+            
+            $.post(url, postData, (response) => {
+                console.log(response);
+                // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
+                let respuesta = JSON.parse(response);
+                // SE CREA UNA PLANTILLA PARA CREAR INFORMACIÓN DE LA BARRA DE ESTADO
+                let template_bar = '';
+                template_bar += `
+                            <li style="list-style: none;">status: ${respuesta.status}</li>
+                            <li style="list-style: none;">message: ${respuesta.message}</li>
+                        `;
+                // SE REINICIA EL FORMULARIO
+                $('#name').val('');
+                $('#productId').val('');
+                $('#cost').val(''); 
+                $('#unit').val(''); 
+                $('#model').val(''); 
+                $('#brand').val('');
+                $('#description').val('');  
+                $('#image').val('');
+                // SE HACE VISIBLE LA BARRA DE ESTADO
+                $('#product-result').show();
+                // SE INSERTA LA PLANTILLA PARA LA BARRA DE ESTADO
+                $('#container').html(template_bar);
+                // SE LISTAN TODOS LOS PRODUCTOS
+                listarProductos();
+                // SE REGRESA LA BANDERA DE EDICIÓN A false
+                edit = false;
+            });
+        });
 
     $(document).on('click', '.product-delete', (e) => {
         if(confirm('¿Realmente deseas eliminar el producto?')) {
@@ -183,16 +301,14 @@ $(document).ready(function(){
             let product = JSON.parse(response);
             // SE INSERTAN LOS DATOS ESPECIALES EN LOS CAMPOS CORRESPONDIENTES
             $('#name').val(product.nombre);
+            $('#cost').val(product.precio); 
+            $('#unit').val(product.unidades); 
+            $('#model').val(product.modelo); 
+            $('#brand').val(product.marca);
+            $('#description').val(product.detalles);  
+            $('#image').val(product.imagen); 
             // EL ID SE INSERTA EN UN CAMPO OCULTO PARA USARLO DESPUÉS PARA LA ACTUALIZACIÓN
-            $('#productId').val(product.id);
-            // SE ELIMINA nombre, eliminado E id PARA PODER MOSTRAR EL JSON EN EL <textarea>
-            delete(product.nombre);
-            delete(product.eliminado);
-            delete(product.id);
-            // SE CONVIERTE EL OBJETO JSON EN STRING
-            let JsonString = JSON.stringify(product,null,2);
-            // SE MUESTRA STRING EN EL <textarea>
-            $('#description').val(JsonString);
+            $('#productId').val(product.id); 
             
             // SE PONE LA BANDERA DE EDICIÓN EN true
             edit = true;
