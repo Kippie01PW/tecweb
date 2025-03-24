@@ -10,7 +10,7 @@
     <?php
         require_once __DIR__ . '/Operacion.php';
         
-        $suma1 = new Suma;
+        $suma1 = new Suma();
         $suma1->cargar1(10);
         $suma1->cargar2(10);
         $suma1->operar();
@@ -18,7 +18,7 @@
         
         echo '<br>';
 
-        $resta1 = new Resta;
+        $resta1 = new Resta();
         $resta1->cargar1(10);
         $resta1->cargar2(5);
         $resta1->operar();

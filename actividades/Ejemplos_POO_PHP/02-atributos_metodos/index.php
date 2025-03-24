@@ -10,7 +10,7 @@
     <?php
         require_once __DIR__ . '/Menu.php';
 
-        $menu1 = new Menu;
+        $menu1 = new Menu('youtube.com');
         $menu1->cargar_opcion('https://www.facebook.com/', 'Facebook');
         $menu1->cargar_opcion('https://twitter.com/', 'Twitter');
         $menu1->cargar_opcion('https://www.instagram.com/', 'Instagram');
