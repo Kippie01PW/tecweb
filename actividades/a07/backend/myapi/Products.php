@@ -1,4 +1,5 @@
 <?php
+namespace MyAPI;
 
 require_once __DIR__ . '/DataBase.php';
 

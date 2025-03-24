@@ -249,8 +249,6 @@ $(document).ready(function(){
             postData['detalles'] = $('#description').val();  
             postData['imagen'] = $('#image').val(); 
             const url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
-
-            console.log(postData);
             
             $.post(url, postData, (response) => {
                 console.log(response);

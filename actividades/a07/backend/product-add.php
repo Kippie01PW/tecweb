@@ -1,10 +1,11 @@
 <?php
 
 require_once './myapi/Products.php';
+use MyAPI\Products;
+
 $products = new Products();
 
 if (isset($_POST['nombre'])) {
-    // Capturar los valores enviados desde el formulario
     $nombre = $_POST['nombre'];
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];

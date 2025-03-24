@@ -1,4 +1,5 @@
 <?php
+namespace MyAPI;
 
 abstract class DataBase{
     
@@ -12,7 +13,7 @@ abstract class DataBase{
         $this->password = $pass;
         $this->database = $db; 
 
-        $this->conexion = new mysqli('localhost', $this->user, $this->password, $this->database); 
+        $this->conexion = new \mysqli('localhost', $this->user, $this->password, $this->database); 
    
         if ($this->conexion->connect_error) {
             die("Error en la conexión: " . $this->conexion->connect_error);
