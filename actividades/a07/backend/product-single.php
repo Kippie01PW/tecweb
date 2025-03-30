@@ -7,7 +7,7 @@
     if( isset($_POST['id']) ){
         $id = $_POST['id']; 
 
-        $reponse = $products->singleProduct($id); 
+        $response = $products->singleProduct($id); 
         echo $response; 
     }  else {
         echo json_encode([
