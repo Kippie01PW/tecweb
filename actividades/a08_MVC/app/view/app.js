@@ -7,8 +7,9 @@ $(document).ready(function(){
 
     function listarProductos() {
         $.ajax({
-            url: './backend/product-list.php',
+            url: '../public/index.php',
             type: 'GET',
+            data: { action: 'list' },
             success: function(response) {
                 // SE OBTIENE EL OBJETO DE DATOS A PARTIR DE UN STRING JSON
                 const productos = JSON.parse(response);
@@ -51,8 +52,8 @@ $(document).ready(function(){
         if($('#search').val()) {
             let search = $('#search').val();
             $.ajax({
-                url: './backend/product-search.php?search='+$('#search').val(),
-                data: {search},
+                url: '../public/index.php',
+                data: { action: 'searchProduct', search: $('#search').val()},
                 type: 'GET',
                 success: function (response) {
                     if(!response.error) {
@@ -122,9 +123,11 @@ $(document).ready(function(){
         } else {
             // Llamada Ajax para comprobar si el nombre existe en la base de datos
             $.ajax({
-                url: './backend/product-data.php',
+                url: '../public/index.php',
                 type: 'GET',
-                data: { search: nameValue },
+                data: { 
+                    action: 'dataProduct',
+                    search: nameValue },
                 success: function(response) {
                     var data = JSON.parse(response);
                     if (data.length > 0) {
@@ -248,7 +251,7 @@ $(document).ready(function(){
             postData['marca'] = $('#brand').val();
             postData['detalles'] = $('#description').val();  
             postData['imagen'] = $('#image').val(); 
-            const url = edit === false ? './backend/product-add.php' : './backend/product-edit.php';
+            const url = '../public/index.php?action=' + (edit === false ? 'addProduct' : 'editProduct');
             
             $.post(url, postData, (response) => {
                 console.log(response);
@@ -281,12 +284,25 @@ $(document).ready(function(){
         });
 
     $(document).on('click', '.product-delete', (e) => {
-        if(confirm('¿Realmente deseas eliminar el producto?')) {
+        if (confirm('¿Realmente deseas eliminar el producto?')) {
             const element = $(this)[0].activeElement.parentElement.parentElement;
             const id = $(element).attr('productId');
-            $.post('./backend/product-delete.php', {id}, (response) => {
-                $('#product-result').hide();
-                listarProductos();
+    
+            $.ajax({
+                url: '../public/index.php',
+                type: 'POST',
+                data: { 
+                    action: 'eliminar', 
+                    id: id 
+                },
+                success: function(response) {
+                    console.log('Respuesta del servidor:', response);
+                    $('#product-result').hide(); 
+                    listarProductos(); 
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud AJAX:', error); // Muestra el error en consola
+                }
             });
         }
     });
@@ -297,7 +313,7 @@ $(document).ready(function(){
         const element = $(this)[0].activeElement.parentElement.parentElement;
         const id = $(element).attr('productId');
         $('button.btn-primary.btn-block.text-center').text("Modificar Producto");
-        $.post('./backend/product-single.php', {id}, (response) => {
+        $.post('../public/index.php', {action:'singleProduct', id:id}, (response) => {
             // SE CONVIERTE A OBJETO EL JSON OBTENIDO
             let product = JSON.parse(response);
             // SE INSERTAN LOS DATOS ESPECIALES EN LOS CAMPOS CORRESPONDIENTES
