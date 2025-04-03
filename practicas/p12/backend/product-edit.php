@@ -1,7 +1,7 @@
 <?php
 
-    require_once './Update/update.php';
-    use MyAPI\Update;
+    require_once __DIR__ . '/../vendor/autoload.php';
+    use Backend\Update\Update;
 
     $products = new Update();
     if( isset($_POST['id']) ) {
@@ -15,5 +15,6 @@
         $imagen = $_POST['imagen'];
 
         $response = $products->editProduct($id, $nombre, $marca, $modelo, $precio, $detalles, $unidades, $imagen); 
+        echo $response; 
     }
 ?>

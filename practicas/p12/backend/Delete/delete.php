@@ -1,7 +1,7 @@
 <?php
 
-namespace MyAPI;
-require_once __DIR__ . '../myapi/DataBase.php';
+namespace Backend\Delete;
+use Backend\Myapi\DataBase; 
 
 class Delete extends DataBase{
     private $response = [];

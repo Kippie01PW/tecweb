@@ -17,7 +17,6 @@ abstract class DataBase{
         if ($this->conexion->connect_error) {
             die("Error en la conexión: " . $this->conexion->connect_error);
         }
-    
     }
 }
 ?>

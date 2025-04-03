@@ -1,7 +1,7 @@
 <?php
 
-namespace MyAPI;
-require_once __DIR__ . '/../myapi/DataBase.php';
+namespace Backend\Read;
+use Backend\Myapi\DataBase; 
 
 class Read extends DataBase{
     private $response = [];

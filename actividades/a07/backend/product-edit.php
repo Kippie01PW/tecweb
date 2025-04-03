@@ -15,5 +15,6 @@
         $imagen = $_POST['imagen'];
 
         $response = $products->editProduct($id, $nombre, $marca, $modelo, $precio, $detalles, $unidades, $imagen); 
+        echo $response; 
     }
 ?>

@@ -1,7 +1,7 @@
 <?php
 
-namespace MyAPI;
-require_once __DIR__ . '../myapi/DataBase.php';
+namespace Backend\Update;
+use Backend\Myapi\DataBase; 
 
 class Update extends DataBase{
     private $response = [];

@@ -1,7 +1,7 @@
 <?php
 
-    require_once './Read/read.php';
-    use MyAPI\Read;
+    require_once __DIR__ . '/../vendor/autoload.php';
+    use Backend\Read\Read;
 
     $products = new Read();
     if( isset($_POST['id']) ){

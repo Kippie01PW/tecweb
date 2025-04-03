@@ -1,7 +1,7 @@
 <?php
 
-namespace MyAPI;
-require_once __DIR__ . '../myapi/DataBase.php';
+namespace Backend\Create;
+use Backend\Myapi\DataBase; 
 
 class Create extends DataBase{
     private $response = [];

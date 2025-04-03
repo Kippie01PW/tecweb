@@ -1,7 +1,7 @@
 <?php
 
-    require_once './Delete/delete.php';
-    use MyAPI\Delete;
+    require_once __DIR__ . '/../vendor/autoload.php';
+    use Backend\Delete\Delete;
 
     $products = new Delete();
     if (isset($_POST['id'])){

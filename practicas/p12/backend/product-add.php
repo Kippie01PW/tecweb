@@ -1,7 +1,7 @@
 <?php
 
-require_once './Create/create.php';
-use MyAPI\Create;
+require_once __DIR__ . '/../vendor/autoload.php';
+use Backend\Create\Create;
 
 $products = new Create();
 
