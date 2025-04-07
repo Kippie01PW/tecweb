@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+  <cuenta correo="miguelitocine@gmail.com">
+    <perfiles>
+      <perfil nombre="Miguelito1" idioma="Español"/>
+      <perfil nombre="MiguelitosMomos" idioma="Inglés"/>
+    </perfiles>
+  </cuenta>
+  <contenido>
+    <peliculas>
+      <genero nombre="Acción">
+        <titulo nombre="Top Gun: Maverik" duracion="131"/>
+        <titulo nombre="Misión Imposible: Sentencia Mortal" duracion="163"/>
+        <titulo nombre="John wick 2" duracion="122"/>
+        <titulo nombre="El señor de los anillos: Las dos torres" duracion="179"/>
+      </genero>
+      <genero nombre="Fantasía">
+        <titulo nombre="Harry Potter y la piedra filosofal" duracion="152"/>
+        <titulo nombre="Una pelicula de Minecraft" duracion="100"/>
+        <titulo nombre="Shrek" duracion="99"/>
+        <titulo nombre="El niño con el pijama de rayas" duracion="125"/>
+      </genero>
+    </peliculas>
+    <programas>
+      <genero nombre="Comedia">
+        <titulo nombre="Nosotros los guapos" duracion="30"/>
+        <titulo nombre="La familia P. Luche" duracion="30"/>
+        <titulo nombre="La divina comedia" duracion="30"/>
+        <titulo nombre="Maria de todos los ángeles" duracion="30"/>
+      </genero>
+      <genero nombre="Drama">
+        <titulo nombre="La Rosa de Guadalupe" duracion="45"/>
+        <titulo nombre="Como dice el dicho" duracion="45"/>
+        <titulo nombre="Casos de la vida real" duracion="45"/>
+        <titulo nombre="La casa de papel" duracion="60"/>
+      </genero>
+    </programas>
+  </contenido>
+</CatalogoVOD>

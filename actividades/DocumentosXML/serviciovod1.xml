@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CatalogoVOD>
+    <cuenta>
+        <correo>miguelitocine@gmail.com</correo>
+        <perfiles>
+            <perfil>
+                <usuario>Miguelito1</usuario>
+                <idioma>Español</idioma>
+            </perfil>
+            <perfil>
+                <usuario>MiguelitosMomos</usuario>
+                <idioma>Inglés</idioma>
+            </perfil>
+        </perfiles>
+    </cuenta>
+    <contenido>
+        <peliculas>
+            <genero>
+                <nombre>Acción</nombre>
+                <titulo>
+                    <nombre>Top Gun: Maverik</nombre>
+                    <duracion>131</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Misión Imposible: Sentencia Mortal</nombre>
+                    <duracion>163</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>John wick 2</nombre>
+                    <duracion>122</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El señor de los anillos: Las dos torres</nombre>
+                    <duracion>179</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Fantasía</nombre>
+                <titulo>
+                    <nombre>Harry Potter y la piedra filosofal</nombre>
+                    <duracion>152</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Una pelicula de Minecraft</nombre>
+                    <duracion>100</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Shrek</nombre>
+                    <duracion>99</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>El niño con el pijama de rayas</nombre>
+                    <duracion>125</duracion>
+                </titulo>
+            </genero>
+        </peliculas>
+        <programas>
+            <genero>
+                <nombre>Comedia</nombre>
+                <titulo>
+                    <nombre>Nosotros los guapos</nombre>
+                    <duracion>30</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La Familia P. Luche</nombre>
+                    <duracion>30</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La divina comedia</nombre>
+                    <duracion>30</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Maria de todos los ángeles</nombre>
+                    <duracion>30</duracion>
+                </titulo>
+            </genero>
+            <genero>
+                <nombre>Drama</nombre>
+                <titulo>
+                    <nombre>La Rosa de Guadalupe</nombre>
+                    <duracion>45</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Como dice el dicho</nombre>
+                    <duracion>45</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>Casos de la vida real</nombre>
+                    <duracion>45</duracion>
+                </titulo>
+                <titulo>
+                    <nombre>La casa de papel</nombre>
+                    <duracion>60</duracion>
+                </titulo>
+            </genero>
+        </programas>
+    </contenido>
+</CatalogoVOD>
