@@ -1,15 +1,8 @@
 {
-    "name": "acernitro/p12",
-    "autoload": {
-        "psr-4": {
-            "Backend\\": "backend/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Kippie01PW",
-            "email": "acarroflores65@gmail.com"
-        }
-    ],
-    "require": {}
+    "require": {
+        "slim/slim": "4.14.0",
+        "slim/psr7": "^1.7",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1"
+    }
 }
